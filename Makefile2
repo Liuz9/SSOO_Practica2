@@ -1,0 +1,40 @@
+all: prac1_mmap prac1_std prac1_malloc gendatos
+
+prac1_mmap: prac1.c revisanotas_mmap.o prac1.h
+	cc prac1.c revisanotas_mmap.o -o prac1_mmap
+
+prac1_malloc: prac1.c revisanotas_malloc.o prac1.h
+	cc prac1.c revisanotas_malloc.o -o prac1_malloc
+
+prac1_std: prac1.c revisanotas_std.o prac1.h
+	cc prac1.c revisanotas_std.o -o prac1_std
+
+revisanotas_std.o: revisanotas_std.c prac1.h
+	cc -c revisanotas_std.c -o revisanotas_std.o
+
+revisanotas_mmap.o: revisanotas_mmap.c prac1.h
+	cc -c revisanotas_mmap.c -o revisanotas_mmap.o
+
+revisanotas_malloc.o: revisanotas_malloc.c prac1.h
+	cc -c revisanotas_malloc.c -o revisanotas_malloc.o
+
+gendatos: gendatos.c
+	cc gendatos.c -o gendatos
+
+.PHONY : clean
+clean:
+	rm *.o
+	rm prac1_mmap
+	rm prac1_malloc
+	rm prac1_std
+	rm gendatos
+
+.PHONY : benchmark
+benchmark: prac1_mmap prac1_std prac1_malloc
+	tar -xzvf datos.tgz
+	./prac1_std
+	tar -xzvf datos.tgz
+	./prac1_malloc
+	tar -xzvf datos.tgz
+	./prac1_mmap
+
