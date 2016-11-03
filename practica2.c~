@@ -21,11 +21,6 @@ int main()
 		nbytes = (int) read(fd, &alumno, sizeof(alumno));
 		if(nbytes == sizeof(alumno))
 		{
-			if(alumno.notamedia >= 4.5 && alumno.notamedia <5)
-			{
-				alumno.notamedia = 5;
-			}
-		
 			printf("%s %s %s\n", alumno.apellido1, alumno.apellido2, alumno.nombre);
 		}
 		else break;
