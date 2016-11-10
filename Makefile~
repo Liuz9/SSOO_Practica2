@@ -14,5 +14,5 @@ malloc:	practica2.c revisanotas_malloc.c practica2.h datos.tgz
 	./practica2_malloc
 
 convert: conviertefichero.c
-	gcc conviertefichero.c -o convert
+	gcc conviertefichero.c -o ejecutable
 	./convert

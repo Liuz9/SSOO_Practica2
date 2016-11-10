@@ -23,7 +23,7 @@ int main()
 		gettimeofday(&t2, NULL);
 
 		printf("Notas modificadas: %i\n", modificados);
-		printf("Tiempo empleado: %ld us\n", t2.tv_usec-t1.tv_usec);
+		printf("Tiempo empleado: %i us\n", t2.tv_usec-t1.tv_usec);
 
 	}
 	else printf("Error al abrir el archivo\n");
