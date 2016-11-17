@@ -15,7 +15,7 @@ int revisanotas(int fd) {
 
 	fstat(fd, &fileStat);
 	num_alumnos = fileStat.st_size/sizeof(alumno);
-	printf("Número de alumnos: %i\n", num_alumnos);
+	printf("Número de alumnos: %i", num_alumnos);
 
 	p_array = mmap(NULL, 217*sizeof(alumno), PROT_WRITE, MAP_SHARED, fd, 0);
 	
