@@ -1,15 +1,24 @@
-#include<unistd.h>
-#include<stdio.h>
-#include<stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>	// stat();
+#include <sys/stat.h>	// stat();
 
 #include "practica2.h"
 
 int revisanotas(int fd) {
-	int nbytes, nchanged, i;
+	int nbytes, nchanged, i, num_alumnos;
 	struct evaluacion alumno;
 	struct evaluacion *p_array;
 
-	p_array = malloc(217 * sizeof(struct evaluacion)); //	Malloc devuelve un puntero
+	
+
+	struct stat fileStat;
+	fstat(fd, &fileStat);
+	num_alumnos = fileStat.st_size/sizeof(alumno);
+	printf("Número de alumnos: %i\n", num_alumnos);
+
+	p_array = malloc(num_alumnos * sizeof(struct evaluacion)); //	Malloc devuelve un puntero
 
 	while(1)
 	{
@@ -29,10 +38,9 @@ int revisanotas(int fd) {
 
 	lseek(fd, 0, SEEK_SET);
 
-	if(write(fd, p_array, 217*sizeof(alumno))!=-1) {
+	if(write(fd, p_array, num_alumnos*sizeof(alumno))!=-1) {
 		printf("Escritura correcta\n");
 	}
 
-	printf("Número total de alumnos: %i\n", i);
 	return nchanged;
 }

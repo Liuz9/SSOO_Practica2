@@ -11,8 +11,8 @@ int revisanotas(int fd) {
 	int nbytes, nchanged, ntotal, i, num_alumnos;
 	struct evaluacion alumno;
 	struct evaluacion *p_array;
+	
 	struct stat fileStat;
-
 	fstat(fd, &fileStat);
 	num_alumnos = fileStat.st_size/sizeof(alumno);
 	printf("Número de alumnos: %i\n", num_alumnos);
