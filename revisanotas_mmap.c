@@ -8,7 +8,7 @@
 #include "practica2.h"
 
 int revisanotas(int fd) {
-	int nbytes, nchanged, ntotal, i, num_alumnos;
+	int nchanged, i, num_alumnos;
 	struct evaluacion alumno;
 	struct evaluacion *p_array;
 	
@@ -16,6 +16,9 @@ int revisanotas(int fd) {
 	fstat(fd, &fileStat);
 	num_alumnos = fileStat.st_size/sizeof(alumno);
 	printf("Número de alumnos: %i\n", num_alumnos);
+
+	nchanged = 0;
+	i = 0;
 
 	p_array = mmap(NULL, 217*sizeof(alumno), PROT_WRITE, MAP_SHARED, fd, 0);
 	

@@ -18,6 +18,9 @@ int revisanotas(int fd) {
 	num_alumnos = fileStat.st_size/sizeof(alumno);
 	printf("Número de alumnos: %i\n", num_alumnos);
 
+	nchanged = 0;
+	i = 0;
+
 	p_array = malloc(num_alumnos * sizeof(struct evaluacion)); //	Malloc devuelve un puntero
 
 	while(1)

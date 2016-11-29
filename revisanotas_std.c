@@ -10,9 +10,12 @@ int revisanotas(int fd) {
 	struct evaluacion alumno;
 
 	struct stat fileStat;
+
 	fstat(fd, &fileStat);
 	num_alumnos = fileStat.st_size/sizeof(alumno);
 	printf("Número de alumnos: %i\n", num_alumnos);
+
+	nchanged = 0;
 
 	while(1)
 	{
