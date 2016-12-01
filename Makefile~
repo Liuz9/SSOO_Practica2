@@ -36,6 +36,6 @@ std_assambler:
 
 std_static:	practica2.c revisanotas_std.c practica2.h datos.tgz
 	tar -xzvf datos.tgz
-	gcc -static practica2.c revisanotas_std.c -o practica2_std_static
-	./practica2_std_static
+	gcc -static practica2.c revisanotas_std.c -o practica2_std
+	./practica2_std
 	./convert
